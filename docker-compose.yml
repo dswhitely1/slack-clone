@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  rabbmitmq:
+    image: rabbitmq:latest
+    env_file:
+      - ./rabbitmq/.env
+    volumes:
+      - ./rabbitmq/data:/var/lib/rabbitmq
+    ports:
+      - '5672:5672'
+
+  postgres:
+    image: postgres
+    env_file:
+      - ./postgres/.env
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
